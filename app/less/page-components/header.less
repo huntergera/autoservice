@@ -3,6 +3,10 @@
 	&__top-line {
 		background: #191919;
 
+		@media @tablet, @mobile {
+			display: none;
+		}
+
 		.container {
 			display: flex;
 			justify-content: flex-end;
@@ -21,7 +25,7 @@
 		}
 	}
 
-	&__right-block {
+	.header__right-block {
 		display: flex;
 
 		@media @tablet, @mobile {
@@ -41,7 +45,16 @@
 			transition: transform .3s;
 			flex-direction: column;
 			padding: 54px 25px;
-        }
+		}
+		
+		.lang {
+			display: none;
+
+			@media @tablet, @mobile {
+				display: flex;
+				justify-content: center;
+			}
+		}
 	}
 
 	&__menu {
@@ -55,7 +68,7 @@
 		}
 	}
 
-	&__link {
+	.header__link {
 		transition: color .2s;
 		padding: 51px 11px;
 		font-size: 16px;
@@ -81,6 +94,10 @@
 			&:before {
 				content: "";
 				width: 100%;
+
+				@media @tablet, @mobile {
+					content: none;
+				}
 			}
 		}
 
@@ -89,6 +106,10 @@
 			&:before {
 				content: "";
 				width: 100%;
+
+				@media @tablet, @mobile {
+					content: none;
+				}
 			}
 		}
 		
@@ -97,6 +118,7 @@
 			font-size: 18px;
 			margin-bottom: 10px;
 			padding: 11px;
+			color: #fff;
 		}
 	}
 
@@ -159,27 +181,6 @@
 		}
 	}
 
-	.login__block {
-		margin-left: 36px;
-
-		@media @tablet, @mobile {
-			display: flex;
-			flex-direction: column;
-			margin-left: 0;
-		}
-	}
-
-	.login {
-		border: 1px solid #fff;
-		border-radius: 5px;
-
-		@media @tablet, @mobile {
-			&:hover {
-				border: 1px solid #fff;
-			}
-		}
-	}
-
 	.mobile_btn {
         cursor: pointer;
         display: none;
@@ -189,7 +190,7 @@
         overflow: hidden;
         padding: 0;
         transition: background .3s;
-        width: 40px;
+        width: 35px;
         position: relative;
 
         &:focus {
@@ -276,6 +277,11 @@
 
 	img {
 		margin-right: 10px;
+
+		@media @mobile {
+			width: 62px;
+			margin-right: 5px;
+		}
 	}
 
 	&__txt {
@@ -288,10 +294,18 @@
 	&__txt--top {
 		font-weight: 900;
 		font-size: 19px;
+
+		@media @mobile {
+			font-size: 14px;
+		}
 	}
 
 	&__txt--bottom {
 		font-size: 15px;
+
+		@media @mobile {
+			font-size: 12px;
+		}
 	}
 }
 
@@ -300,4 +314,23 @@
     .header__right-block {
         transform: translateX(0);
     }
+}
+
+.login {
+	display: none;
+	width: 46px;
+	height: 46px;
+	background: @main-color;
+	box-shadow: 0px 7px 12px rgba(0, 0, 0, 0.11);
+	border-radius: 7px;
+	justify-content: center;
+	align-items: center;
+
+	@media @tablet, @mobile {
+		display: flex;
+	}
+
+	img {
+		width: 22px;
+	}
 }

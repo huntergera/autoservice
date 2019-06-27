@@ -54,6 +54,42 @@ $('.bg-slider').slick({
     arrows: false,
 });
 
+$(function() {
+    $('.slider-comments').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        mobileFirst: true,
+        arrows: false,
+        dots: true,
+        // centerMode: true,
+        // centerPadding: '10px',
+        responsive: [
+            {
+                breakpoint: 560,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 840,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 1025,
+                settings: 'unslick'
+            },
+        ]
+    });
+
+    $(window).on('resize', function() {
+        $('.slider-comments').slick('resize');
+    });
+});
+
 new WOW().init();
 
 })(jQuery);
