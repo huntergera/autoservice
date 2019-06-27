@@ -33,7 +33,7 @@ h1, .h1 {
 	font-weight: 900;
 	line-height: 86px;
 
-	@desktop {
+	@media @desktop {
 		font-size: 65px;
 	}
 
@@ -150,7 +150,6 @@ h4, .h4 {
 .top-section {
 	padding: 141px 0 150px 0;
 	position: relative;
-	overflow: hidden;
 
 	@media @desktop {
 		padding: 85px 0;
@@ -173,6 +172,14 @@ h4, .h4 {
 		top: -16%;
 		left: 31%;
 		width: 88%;
+		transform: translateX(100%);
+		opacity: 0;
+		transition: transform .8s, opacity .8s;
+
+		&.visible {
+			transform: translateX(0);
+			opacity: 1;
+		}
 
 		@media @desktop {
 			top: 6%;
@@ -243,6 +250,10 @@ h4, .h4 {
 		width: 100%;
 	}
 
+	.slick-list {
+		height: 100%;
+	}
+
 	.slick-dots {
 		display: flex;
 		position: absolute;
@@ -254,7 +265,7 @@ h4, .h4 {
 			background: #000;
 			margin-right: 19px;
 
-			&:last-hild {
+			&:last-child {
 				margin-right: 0;
 			}
 
@@ -382,6 +393,10 @@ h4, .h4 {
 			li {
 				margin-right: 14px;
 
+				input {
+					opacity: 0;
+				}
+
 				&:last-child {
 					margin-right: 0;
 				}
@@ -415,6 +430,14 @@ h4, .h4 {
 		@media @tablet, @mobile {
 			position: static;
 			width: 100%;
+		}
+
+		@media @tablet {
+			height: 400px;
+		}
+
+		@media @mobile {
+			height: 320px;
 		}
 
 		img {
@@ -489,8 +512,14 @@ h4, .h4 {
 				overflow: hidden;
 				filter: blur(5px);
 
+				@media @mobile {
+					filter: blur(0);
+				}
+
 				img {
 					width: 100%;
+					height: 141px;
+					object-fit: cover;
 				}
 			}
 
@@ -695,9 +724,17 @@ h4, .h4 {
 		margin: 0 auto -79px auto;
 		position: relative;
 		z-index: 1;
+		transform: translateY(20%);
+		opacity: 0;
+		transition: transform .8s, opacity .8s;
 
 		@media @tablet {
 			margin-bottom: -50px;
+		}
+
+		&.visible {
+			transform: translateY(0);
+			opacity: 1;
 		}
 
 		img {

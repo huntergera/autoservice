@@ -23,23 +23,23 @@ $('.dropdown').on('click', function() {
     }
 });
 
-//Top-line fixed
-$(window).on('scroll', function() {
-    var scrolled = $(window).scrollTop();
-    if (scrolled > 0) {
-        $('.header').addClass('header__fixed');
-    }else  {
-        $('.header').removeClass('header__fixed');
-    };
-});
+// //Top-line fixed
+// $(window).on('scroll', function() {
+//     var scrolled = $(window).scrollTop();
+//     if (scrolled > 0) {
+//         $('.header').addClass('header__fixed');
+//     }else  {
+//         $('.header').removeClass('header__fixed');
+//     };
+// });
 
-//Tabs conditions
-$('.tabs__menu').on('click', '.tabs__control--item:not(.active)', function() {
-    $(this)
-        .addClass('active').siblings().removeClass('active')
-        .closest('div.tabs').find('div.tabs__content').removeClass('active')
-        .eq($(this).index()).addClass('active');
-});
+// //Tabs conditions
+// $('.tabs__menu').on('click', '.tabs__control--item:not(.active)', function() {
+//     $(this)
+//         .addClass('active').siblings().removeClass('active')
+//         .closest('div.tabs').find('div.tabs__content').removeClass('active')
+//         .eq($(this).index()).addClass('active');
+// });
 
 //Sliders
 $('.bg-slider').slick({
@@ -52,6 +52,14 @@ $('.bg-slider').slick({
     fade: true,
     cssEase: 'linear',
     arrows: false,
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                dots: false,
+            }
+        }
+    ]
 });
 
 $(function() {
@@ -61,8 +69,6 @@ $(function() {
         mobileFirst: true,
         arrows: false,
         dots: true,
-        // centerMode: true,
-        // centerPadding: '10px',
         responsive: [
             {
                 breakpoint: 560,
@@ -90,8 +96,34 @@ $(function() {
     });
 });
 
-new WOW().init();
+
+// new WOW().init();
 
 })(jQuery);
 
-
+function show(){
+    if(showEl.length > 0){
+      var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+      var scrolled_n = scrolled + window.innerHeight-(window.innerHeight/4);
+      
+      for (var i = 0; i < showEl.length; i++) {
+        if(scrolled_n > showEl[i].getBoundingClientRect().top + scrolled ){
+          showEl[i].classList.add('visible');
+          showEl.splice(i,1);
+        }
+      }
+    }
+  }
+  
+  var shows = document.getElementsByClassName('show_on_scroll');
+  
+  var showEl = new Array();
+  for (var i = shows.length - 1; i >= 0; i--) {
+     showEl.push(shows[i]);
+  }
+  
+  window.onscroll = function() {
+   show();
+  }
+  
+  show();

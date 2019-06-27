@@ -87,13 +87,13 @@
 				<div class="top-section__content">
 					<h1 class="h1">Search For Car Workshops at Your Vehicle</h1>
 					<p class="subtitle">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-					<form action="" class="form__search-station">
+					<form class="form__search-station">
 						<label for="search-station">Enter Please for a search yuor service station</label>
 						<input class="input" type="text" id="search-station" placeholder="POST CODE OR CITY">
 						<button class="btn" type="submit">search</button>
 					</form>
 				</div>
-				<div class="top-section__banner">
+				<div class="top-section__banner show_on_scroll">
 					<img src="img/banner-1_phone.png" alt="Phone">
 				</div>
 			</div>
@@ -151,7 +151,7 @@
 				<div class="left-block">
 					<h2 class="h2">Please Select Your Location</h2>
 					<p class="subtitle">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search</p>
-					<form action="" class="form__search-location">
+					<form class="form__search-location">
 						<input class="input" type="text" placeholder="Search Location">
 						<ul class="location__list">
 							<li>
@@ -183,9 +183,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="map">
-				<img src="img/map.png" alt="map">
-			</div>
+			<div class="map" id="map"></div>
 		</section>
 		<!-- END SEARCH-LOCATION -->
 
@@ -213,7 +211,7 @@
 								<div class="rate">5.8</div>
 							</div>
 							<p class="list-item__txt">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search It uses a dictionary of over 200 Latin</p>
-							<time class="date">29.03.2019</time>
+							<span class="date">29.03.2019</span>
 						</div>
 					</li>
 					<li class="list-item">
@@ -231,7 +229,7 @@
 								<div class="rate">8.6</div>
 							</div>
 							<p class="list-item__txt">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search It uses a dictionary of over 200 Latin</p>
-							<time class="date">29.03.2019</time>
+							<span class="date">29.03.2019</span>
 						</div>
 					</li>
 					<li class="list-item">
@@ -249,7 +247,7 @@
 								<div class="rate">7.4</div>
 							</div>
 							<p class="list-item__txt">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search It uses a dictionary of over 200 Latin</p>
-							<time class="date">29.03.2019</time>
+							<span class="date">29.03.2019</span>
 						</div>
 					</li>
 					<li class="list-item">
@@ -267,7 +265,7 @@
 								<div class="rate">10.1</div>
 							</div>
 							<p class="list-item__txt">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search It uses a dictionary of over 200 Latin</p>
-							<time class="date">29.03.2019</time>
+							<span class="date">29.03.2019</span>
 						</div>
 					</li>
 				</ul>
@@ -295,7 +293,7 @@
 		<section class="lists-stations">
 			<div class="container">
 				<div class="lists-stations__item">
-					<p class="item-title show dropdown">Most closer service satantions</p>
+					<h4 class="item-title show dropdown">Most closer service satantions</h4>
 					<ul class="list dropdown__list">  
 						<li>
 							<a href="#" class="list__item"><strong>Sandhurst</strong>  (town)</a>
@@ -315,7 +313,7 @@
 					</ul>
 				</div>
 				<div class="lists-stations__item">
-					<p class="item-title show dropdown">Most closer service satantions</p>
+					<h4 class="item-title show dropdown">Most closer service satantions</h4>
 					<ul class="list dropdown__list">
 						<li>
 							<a href="#" class="list__item"><strong>Chiltern</strong>  (district)</a>
@@ -335,7 +333,7 @@
 					</ul>
 				</div>
 				<div class="lists-stations__item">
-					<p class="item-title show dropdown">Most closer service satantions</p>
+					<h4 class="item-title show dropdown">Most closer service satantions</h4>
 					<ul class="list dropdown__list">  
 						<li>
 							<a href="#" class="list__item"><strong>Sandhurst</strong>  (town)</a>
@@ -355,7 +353,7 @@
 					</ul>
 				</div>
 				<div class="lists-stations__item">
-					<p class="item-title show dropdown">Most closer service satantions</p>
+					<h4 class="item-title show dropdown">Most closer service satantions</h4>
 					<ul class="list dropdown__list">
 						<li>
 							<a href="#" class="list__item"><strong>Chiltern</strong>  (district)</a>
@@ -382,7 +380,7 @@
 		<section class="advantages">
 			<div class="container">
 				<h2 class="h2">we work hard to development app a soon as posible</h2>
-				<div class="smartphone">
+				<div class="smartphone show_on_scroll">
 					<img src="img/phone_footer.png" alt="smartphone">
 				</div>
 			</div>
@@ -452,12 +450,37 @@
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/slick.min.js"></script>
 	<script src="js/wow.js"></script>
-	<script src="js/all.js"></script>
 	<!-- endbuild -->
 
 	<!-- build:js js/custom.js -->
 	<script src="js/custom.js"></script>
 	<!-- endbuild -->
+
+	<script>
+		function initMap() {
+			// The location of Uluru
+			var uluru = {lat: 48.855956, lng: 2.299411};
+			// The map, centered at Uluru
+			var map = new google.maps.Map(
+				document.getElementById('map'), {
+					zoom: 15,
+					center: uluru,
+					zoomControl: false,
+					mapTypeControl: false,
+					streetViewControl: false,
+					fullscreenControl: false
+				});
+			// The marker, positioned at Uluru
+			var marker = new google.maps.Marker({
+				position: uluru, map: map,
+				icon: './img/icons/point.svg'
+			});
+		}
+	</script>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDM4NI3HrqMkQ5wWjg2xE8CJc917jJ48s&callback=initMap" type="text/javascript"></script>
+	
+
 
 <!-- END SCRIPTS -->
 </body>
