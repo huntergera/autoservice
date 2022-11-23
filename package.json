@@ -9,7 +9,7 @@
   "author": "Ad",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.18.5",
+    "browser-sync": "^2.27.10",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean": "^0.4.0",
